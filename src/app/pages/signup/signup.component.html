@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Slide Navbar</title>
+    <!-- <link rel="stylesheet" type="text/css" href="slide navbar style.css"> -->
+    <link href="https://fonts.googleapis.com/css2?family=Jost:wght@500&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <div class="main">
+        <input type="checkbox" id="chk" aria-hidden="true">
+
+        <div class="signup">
+            <form [formGroup]="signupForm" (ngSubmit)="handleSubmit()">
+                <label for="chk" aria-hidden="true">Sign up</label>
+                <input type="text" name="name" formControlName="name" placeholder="Your Name">
+                @if(signupForm.controls['name'].errors?.['required'] &&
+                signupForm.controls['name'].touched ) {
+                <small class="text-danger text-small">Name is required</small>
+                }
+
+
+                <input type="email" name="email" formControlName="email" placeholder="Email">
+                @if(signupForm.controls['email'].errors?.['required'] &&
+                signupForm.controls['email'].touched ) {
+                <small class="text-danger text-small">Email is required</small>
+                }
+                @if(signupForm.controls['email'].errors?.['email'] &&
+                signupForm.controls['email'].touched ) {
+                <small class="text-danger text-small">Email not valid</small>
+                }
+
+
+
+                <input type="password" name="password" formControlName="password" placeholder="Password" required="">
+                @if(signupForm.controls['password'].errors?.['required'] &&
+                signupForm.controls['password'].touched ) {
+                <small class="text-danger text-small">Password is required</small>
+                }
+                <small
+                    *ngIf="signupForm.controls['password'].errors?.['minlength'] && signupForm.controls['password'].touched"
+                    class="text-danger text-small">Password must be at least 6 characters long</small>
+
+
+
+                <input type="password" name="confirmPassword" formControlName="confirmPassword"
+                    placeholder="ConfirmPassword" required="">
+
+                @if(signupForm.controls['confirmPassword'].errors?.['required'] &&
+                signupForm.controls['confirmPassword'].touched ) {
+                <small class="text-danger text-small">Confirm Password is required</small>
+                }
+                <small
+                    *ngIf="signupForm.controls['confirmPassword'].errors?.['minlength'] && signupForm.controls['confirmPassword'].touched"
+                    class="text-danger text-small"> Confirm Password must be at least 6 characters long</small>
+                <button type="submit">Sign up</button>
+            </form>
+        </div>
+
+        <div class="login">
+            <form>
+                <label for="chk" aria-hidden="true" routerLink="/signin">Sign in</label>
+                <button routerLink="/signin">Sign in</button>
+            </form>
+        </div>
+    </div>
+</body>
+<script>
+    Alert1('Lỗi');
+</script>
+
+</html>

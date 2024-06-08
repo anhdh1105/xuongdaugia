@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Slide Navbar</title>
+    <!-- <link rel="stylesheet" type="text/css" href="slide navbar style.css"> -->
+    <link href="https://fonts.googleapis.com/css2?family=Jost:wght@500&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <div class="main">
+        <input type="checkbox" id="chk" aria-hidden="true">
+
+        <div class="signup">
+            <form [formGroup]="signinForm" (ngSubmit)="handleSubmit()">
+                <label for="chk" aria-hidden="true">Sign in</label>
+                <input type="email" name="email" formControlName="email" placeholder="Email" required="">
+                @if(signinForm.controls['email'].errors?.['required'] &&
+                signinForm.controls['email'].touched ) {
+                <small class="text-danger text-small">Email is required</small>
+                }
+                @if(signinForm.controls['email'].errors?.['email'] &&
+                signinForm.controls['email'].touched ) {
+                <small class="text-danger text-small">Email is not valid</small>
+                }
+                <input type="password" name="pswd" formControlName="password" placeholder="Password" required="">
+                @if(signinForm.controls['password'].errors?.['required'] &&
+                signinForm.controls['password'].touched ) {
+                <small class="text-danger text-small">Password is required</small>
+                }
+                <small
+                    *ngIf="signinForm.controls['password'].errors?.['minlength'] && signinForm.controls['password'].touched"
+                    class="text-danger text-small">Password must be at least 6 characters long</small>
+
+                <button [disabled]="signinForm.invalid">Sign in</button>
+                <a routerLink="/" class="text-back text-small">Home</a>
+            </form>
+        </div>
+
+        <div class="login">
+            <form>
+                <label for="chk" aria-hidden="true" routerLink="/signup">Sign up</label>
+            </form>
+        </div>
+    </div>
+</body>
+
+</html>

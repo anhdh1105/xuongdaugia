@@ -1,0 +1,35 @@
+<div class="card">
+    <div class="card-header">
+        <h4>Member Management</h4>
+    </div>
+    <div class="card-body">
+
+        <table class="table" *ngIf="!error">
+            <thead>
+                <tr>
+                    <th>
+                        Name
+                    </th>
+                    <th>Email</th>
+                    <th>Role</th>
+                    <th>Action</th>
+                </tr>
+                <tr *ngFor='let u of users'>
+                    <td>{{u.name}}</td>
+                    <td>{{u.email}}</td>
+                    <td>{{u.role}}</td>
+                    <td *ngIf="u.role === 'admin'">
+                        <!-- <button class='btn btn-danger' (click)="deleteUser(u._id)">Delete</button> -->
+                    </td>
+                    <td *ngIf="u.role !== 'admin'">
+                        <button class='btn btn-danger' (click)="deleteUser(u._id)">Delete</button>
+                    </td>
+
+                </tr>
+            </thead>
+        </table>
+        <div *ngIf="error">
+            <div class="alert alert-danger">{{error}}</div>
+        </div>
+    </div>
+</div>

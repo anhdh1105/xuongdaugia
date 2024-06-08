@@ -1,0 +1,12 @@
+<div class="container-fluid d-flex flex-column min-vh-100">
+    <!-- <app-header></app-header> -->
+    <div class="row flex-grow-1 m-0">
+        <div class="col-md-2 p-0">
+            <app-sidebar></app-sidebar>
+        </div>
+        <div class="col-md-10 p-0 content-container">
+            <router-outlet (activate)="onActivate()"></router-outlet>
+        </div>
+    </div>
+    <app-footer></app-footer>
+</div>

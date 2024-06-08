@@ -1,0 +1,60 @@
+<div class="container border border-danger w-50">
+  <div class="caption">
+    <h4 class="text-center">Thông tin sinh viên</h4>
+    <img class="tẽt" src="../assets/images/2.jpg" width="300px" alt="">
+  </div>
+  <ul>
+    <li><span>Họ tên: </span>{{student.name}}</li>
+    <li><span>Ngày sinh: </span>{{student.date}}</li>
+    <li><span>Giới tính: </span>{{student.gender}}</li>
+    <li><span>Điểm trung bình: </span>{{student.avg}}</li>
+  </ul>
+</div>
+
+
+<h3>Inventors List</h3>
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">First</th>
+      <th scope="col">Last</th>
+      <th scope="col">Year</th>
+      <th scope="col">Passed</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let inventor of inventors">
+      <th scope="row">{{inventor.id}}</th>
+      <td>{{inventor.first}}</td>
+      <td>{{inventor.last}}</td>
+      <td>{{inventor.year}}</td>
+      <td>{{inventor.passed}}</td>
+    </tr>
+  </tbody>
+</table>
+
+
+<h3>Products List</h3>
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Image</th>
+      <th scope="col">Name</th>
+      <th scope="col">Code</th>
+      <th scope="col">Available</th>
+      <th scope="col">Price</th>
+      <th scope="col">Rating</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let product of products">
+      <th scope="row"><img src={{product.imageUrl}} width="50px" alt=""></th>
+      <td>{{product.productName}}</td>
+      <td>{{product.productCode}}</td>
+      <td>{{product.releaseDate}}</td>
+      <td>{{product.price}}</td>
+      <td>{{product.starRating}}</td>
+    </tr>
+  </tbody>
+</table>

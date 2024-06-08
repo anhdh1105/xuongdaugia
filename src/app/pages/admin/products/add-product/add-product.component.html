@@ -1,0 +1,130 @@
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+
+<div class="container contact">
+    <div class="row">
+        <div class="col-md-3">
+            <div class="contact-info">
+                <i class="fa-solid fa-gear"></i>
+                <h2>Manage Product</h2>
+                <h4>Thêm sản phẩm</h4>
+            </div>
+        </div>
+        <div class="col-md-9" *ngIf="!error">
+            <div class="contact-form">
+                <form [formGroup]="addProductForm" (ngSubmit)="handleSubmit()" action="">
+                    <div class="form-group">
+                        <label class="control-label col-sm-2" for="fname">Name:</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" formControlName="name" id="name"
+                                placeholder="Tên sản phẩm" name="fname">
+                        </div>
+                        @if(addProductForm.controls['name'].errors?.['required'] &&
+                        addProductForm.controls['name'].touched ) {
+                        <small class="text-danger text-small">Name is Required</small>
+                        } @if(addProductForm.controls['name'].errors?.['minlength'] &&
+                        addProductForm.controls['name'].touched ) {
+                        <small class="text-danger text-small">Min Length is min 6 ky tu</small>}
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-sm-2" for="lname">Price:</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" formControlName="price" id="price" placeholder="Giá"
+                                name="price">
+                        </div>
+                        @if(addProductForm.controls['price'].errors?.['required'] &&
+                        addProductForm.controls['price'].touched ) {
+                        <small class="text-danger text-small">Price is Required</small>
+                        } @if(addProductForm.controls['price'].errors?.['min'] &&
+                        addProductForm.controls['price'].touched ) {
+                        <small class="text-danger text-small">Gia phai lon hon 0</small>}
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-sm-2" for="category">Category:</label>
+                        <select name="category" formControlName="category" class="form-control" id="">
+                            <option value="" disabled>----- Select Category -----</option>
+                            <option class="form-control" value="" *ngFor="let category of categories"
+                                [value]="category._id">{{category.name}}
+                            </option>
+                        </select>
+                        <!-- <div class="col-sm-10">
+                            <input type="text" class="form-control" formControlName="category" id="category"
+                                placeholder="Danh mục" name="category">
+                        </div> -->
+                        @if(addProductForm.controls['category'].errors?.['required'] &&
+                        addProductForm.controls['category'].touched ) {
+                        <small class="text-danger text-small">Category is Required</small>
+                        }
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-sm-2" for="image">Image:</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" formControlName="image" id="image"
+                                placeholder="Ảnh sản phẩm" name="image">
+                        </div>
+                        @if(addProductForm.controls['image'].errors?.['required'] &&
+                        addProductForm.controls['image'].touched ) {
+                        <small class="text-danger text-small">Image is Required</small>
+                        }
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-sm-2" for="discount">Discount:</label>
+                        <div class="col-sm-10">
+                            <input type="number" class="form-control" formControlName="discount" id="discount"
+                                placeholder="Giảm giá" name="discount">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-sm-2" for="countInStock">inStock:</label>
+                        <div class="col-sm-10">
+                            <input type="number" class="form-control" formControlName="countInStock" id="countInStock"
+                                placeholder="Khả dụng" name="countInStock">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-sm-2" for="rating">Rating:</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" formControlName="rating" id="rating"
+                                placeholder="Đánh giá" name="rating">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-sm-2" for="description">Description:</label>
+                        <div class="col-sm-10">
+                            <textarea class="form-control" formControlName="description" rows="5"
+                                id="description"></textarea>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label col-sm-2" for="description">IsShow:</label>
+                        <div class="col-sm-10">
+                            <select name="" class="form-control" formControlName="isShow" id="isShow">
+                                <option class="form-control" [ngValue]="true">True</option>
+                                <option class="form-control" [ngValue]="false">False</option>
+                            </select>
+                        </div>
+                    </div>
+                    <!-- <div class="form-group">
+                        <label class="control-label col-sm-2" for="description">No Show:</label>
+                        <div class="col-sm-10">
+                            <input type="checkbox" name="isShow" value="false" formControlName="isShow" id=""> No show
+                            product !
+                        </div>
+                    </div> -->
+                    <div class="form-group">
+                        <div class="col-sm-offset-2 col-sm-10">
+                            <button type="submit" class="btn btn-default">Submit</button>
+                        </div>
+                    </div>
+                </form>
+
+            </div>
+        </div>
+        <div class="col-md-9" *ngIf="error">
+            <div class="alert alert-danger">{{error}}</div>
+        </div>
+    </div>
+</div>

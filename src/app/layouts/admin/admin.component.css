@@ -1,0 +1,50 @@
+body,
+html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    width: 100%;
+}
+
+.container-fluid {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    padding: 0;
+    margin: 0;
+}
+
+.row {
+    flex-grow: 1;
+    margin: 0;
+}
+
+.col-md-3,
+.col-md-9 {
+    padding: 0;
+    margin: 0;
+}
+
+.app-sidebar,
+.app-footer,
+.app-header {
+    width: 100%;
+    padding: 0;
+    margin: 0;
+}
+
+.app-sidebar {
+    background-color: #343a40;
+    /* Sidebar background color */
+    color: #fff;
+    /* Sidebar text color */
+    min-height: 100%;
+    /* Ensure sidebar takes full height */
+}
+
+.router-outlet {
+    background-color: #fff;
+    /* Main content background color */
+    padding: 0;
+    margin: 0;
+}
